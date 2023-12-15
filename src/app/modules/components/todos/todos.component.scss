@@ -1,0 +1,14 @@
+.todo_form {
+    .form_container {
+        background-color: aliceblue;
+        display: flex;
+        justify-content: center;
+        .todo_input {
+            margin: 1em;
+        }
+    }
+    .list_header {
+        display: flex;
+        justify-content: center;
+    }
+}

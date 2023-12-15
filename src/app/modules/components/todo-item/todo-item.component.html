@@ -1,0 +1,17 @@
+<div class="col-12 list_container">
+    <div class="grid list_item">
+        <div class="col-10 ellipsis-item">
+            <span>{{ index }}&nbsp;.</span>
+            <span *ngIf="!editItem" [ngClass]="isCompleted? 'item_done': ''">&nbsp;{{ todoItem }}</span>
+            <span *ngIf="editItem"><input class="edit_input" pInputText type="text" [(ngModel)]="editItem" /></span>
+        </div>
+        <div [formGroup]="form" class="col-2">
+            <span class="item_checkbox"><p-checkbox [binary]="true" formControlName="isCompleted" (onChange)="onChangeState(todoIndex, $event)"></p-checkbox></span>
+            <span *ngIf="!editItem" class="icon_container" (click)="editTodo()"><i class="pi pi-file-edit edit_icon"></i></span>
+            <span *ngIf="editItem" class="icon_container" (click)="updateTodo()"><i class="pi pi-check update_icon"></i></span>
+            <span *ngIf="!editItem" class="icon_container" (click)="deleteTodo(todoIndex)"><i class="pi pi-trash trash_icon"></i></span>
+            <span *ngIf="editItem" class="icon_container" (click)="cancelEdit()"><i class="pi pi-times cancel_icon"></i></span>
+        </div>
+    </div>
+</div>
+

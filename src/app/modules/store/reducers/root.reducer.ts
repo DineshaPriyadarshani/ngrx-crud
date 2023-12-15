@@ -1,5 +1,5 @@
 import { Action, ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
-import * as fromTodosReducers from './add-todo.reducer';
+import * as fromTodosReducers from './todo.reducer';
 import { InjectionToken } from '@angular/core';
 
 export interface State {

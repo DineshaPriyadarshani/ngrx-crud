@@ -1,0 +1,35 @@
+.list_container {
+    .list_item {
+        .item_done {
+            text-decoration: line-through;
+            color: gray;
+        }
+        .item_checkbox {
+        }
+        .ellipsis-item {
+            white-space: nowrap;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+        }
+        .icon_container {
+            padding: 0.3em;
+            .edit_icon {
+                color: #2563eb;
+            }
+            .trash_icon, .cancel_icon {
+                color: red;
+            }
+            .update_icon {
+                color: green;
+            }
+        }
+        .edit_input {
+            border: none;
+            border-bottom: 1px solid;
+            padding: 0;
+            border-radius: 0;
+        }
+        
+    }
+    
+}

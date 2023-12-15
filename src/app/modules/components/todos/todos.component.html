@@ -1,0 +1,24 @@
+<div class="grid col-4 col-offset-4 todo_form">
+    <div class="col-12 form_container">
+        <input class="todo_input" pInputText type="text" pInputText [(ngModel)]="todoItem" />
+        <button class="todo_input" pButton pRipple type="button" label="Add ToDo" (click)="addTodoItem()" [disabled]="!todoItem"></button>
+    </div>
+    <div class="col-12">
+        <div class="col-12 list_header">
+            <h3>ToDo List</h3>
+        </div>
+        <form [formGroup]="todoForm">
+            <div *ngFor="let item of todosFormArray.controls; let index = index" class="col-12">
+                <app-todo-item
+                    [form]="item"
+                    [index]="index+1"
+                    [todo]="todosList[index]"
+                    (changeTodoState)="onChangeTodoState($event)"
+                    (onUpdateTodo)="updateTodo($event)"
+                    (onDeleteTodo)="deleteTodo($event)"
+                ></app-todo-item>
+            </div>
+        </form>
+    </div>
+</div>
+

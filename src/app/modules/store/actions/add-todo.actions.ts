@@ -11,7 +11,7 @@ export const addTodoAction = createAction(
 export const addTodoSuccessAction = createAction(
     '[TODO] add todo success',
     props<{
-        payload: Todo
+        payload: Todo[]
     }>()
 );
 
