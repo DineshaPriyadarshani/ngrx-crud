@@ -25,8 +25,8 @@ export class TodosComponent implements OnInit {
   todoForm: FormGroup;
 
   ngOnInit(): void {
-    this.getTodoList();
     this.todoForm = this.createForm();
+    this.getTodoList();
   }
 
   createForm(): FormGroup {
@@ -70,16 +70,13 @@ export class TodosComponent implements OnInit {
 
   onChangeTodoState(e: Todo) {
     this.store.dispatch(editTodoAction({payload: e}));
-    this.getTodoList();
   }
 
   updateTodo(e: Todo) {
     this.store.dispatch(updateTodoAction({payload: e}));
-    this.getTodoList();
   }
 
   deleteTodo(e: string) {
     this.store.dispatch(deleteTodoAction({id: e}));
-    this.getTodoList();
   }
 }

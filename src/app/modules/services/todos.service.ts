@@ -1,11 +1,19 @@
 import { Injectable, OnDestroy } from "@angular/core";
 import { of } from "rxjs";
 import { Todo } from "../models";
-
+// import AsyncLocalStorage from 'async-local-storage';
 @Injectable() 
 export class TodoService implements OnDestroy {
 
     addTodo(todo: Todo) {
+
+        // setItem = async () => {
+        //     try {
+        //       await AsyncLocalStorage.setItem('@key', 'value')
+        //     } catch(e) {
+        //       // error
+        //     }
+        //   }
         let TodoArr: Todo[] = JSON.parse(localStorage.getItem('todos') || '[]');
         TodoArr?.push(todo);
         localStorage.setItem('todos', JSON.stringify(TodoArr));
@@ -43,6 +51,12 @@ export class TodoService implements OnDestroy {
         if (index !== -1) {
             TodoArr.splice(index, 1);
         }
+        localStorage.setItem('todos', JSON.stringify(TodoArr));
+        return of({ payload: TodoArr });
+    }
+
+    loadTodo() {
+        let TodoArr: Todo[] = JSON.parse(localStorage.getItem('todos') || '[]');
         localStorage.setItem('todos', JSON.stringify(TodoArr));
         return of({ payload: TodoArr });
     }

@@ -5,6 +5,7 @@ import { catchError, map, of, switchMap } from "rxjs";
 import { TodoService } from "src/app/modules/services/todos.service";
 import { editTodoAction, editTodoFailureAction, editTodoSuccessAction, updateTodoAction, updateTodoFailureAction, updateTodoSuccessAction } from "../actions/edit-todo.actions";
 import { deleteTodoAction, deleteTodoFailureAction, deleteTodoSuccessAction } from "../actions/delete-todo.actions";
+import { loadTodoAction, loadTodoFailureAction, loadTodoSuccessAction } from "../actions/load-todo.actions";
 
 @Injectable()
 export class TodosEffects {
@@ -20,6 +21,15 @@ export class TodosEffects {
         )
     )
 
+    addTodoSuccess$ = createEffect(() =>
+        this.$actions.pipe(
+        ofType(addTodoSuccessAction),
+        switchMap(() => [
+            loadTodoAction()
+        ])),
+        { dispatch: false }
+    );
+
     editTodo$ = createEffect(() => 
             this.$actions.pipe(
                 ofType(editTodoAction),
@@ -31,6 +41,15 @@ export class TodosEffects {
                 })
             )
     )
+
+    editTodoSuccess$ = createEffect(() =>
+        this.$actions.pipe(
+        ofType(editTodoSuccessAction),
+        switchMap(() => [
+            loadTodoAction()
+        ])),
+        { dispatch: false }
+    );
 
     updateTodo$ = createEffect(() => 
             this.$actions.pipe(
@@ -44,6 +63,15 @@ export class TodosEffects {
             )
     )
 
+    updateTodoSuccess$ = createEffect(() =>
+        this.$actions.pipe(
+        ofType(updateTodoSuccessAction),
+        switchMap(() => [
+            loadTodoAction()
+        ])),
+        { dispatch: false }
+    );
+
     deleteTodo$ = createEffect(() => 
             this.$actions.pipe(
                 ofType(deleteTodoAction),
@@ -51,6 +79,27 @@ export class TodosEffects {
                     return this.$todoService.deleteTodoAction(id).pipe(
                         map((res) => deleteTodoSuccessAction({payload: res.payload})),
                         catchError((errors) => of(deleteTodoFailureAction({errors: errors})))
+                    )
+                })
+            )
+    )
+
+    deleteTodoSuccess$ = createEffect(() =>
+        this.$actions.pipe(
+        ofType(deleteTodoSuccessAction),
+        switchMap(() => [
+            loadTodoAction()
+        ])),
+        { dispatch: false }
+    );
+
+    loadTodo$ = createEffect(() => 
+            this.$actions.pipe(
+                ofType(loadTodoAction),
+                switchMap(() => {
+                    return this.$todoService.loadTodo().pipe(
+                        map((res) => loadTodoSuccessAction({payload: res.payload})),
+                        catchError((errors) => of(loadTodoFailureAction({errors: errors})))
                     )
                 })
             )

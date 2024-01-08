@@ -7,7 +7,7 @@ import { Primemodules } from './prime.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import * as fromTodos from './store/reducers';
-
+import * as fromGuards from './guards';
 
 @NgModule({
   declarations: [
@@ -23,6 +23,7 @@ import * as fromTodos from './store/reducers';
   ],
   exports: [
     ...Primemodules
-  ]
+  ],
+  providers: [fromGuards.guards]
 })
 export class MainModule { }

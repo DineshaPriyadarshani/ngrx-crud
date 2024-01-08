@@ -11,3 +11,8 @@ export const selectTodos = createSelector(
     selectTodosState,
     fromTodos.getTodos
 );
+
+export const selectTodosLoaded = createSelector(
+  selectTodosState,
+  fromTodos.getTodosLoaded
+)
