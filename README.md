@@ -16,10 +16,10 @@ npm start // <-- run the project -->
 
 ## app view
 
-[app view](./imgs/preview.PNG)
+![](./imgs/preview.PNG)
 
 ## references
 
-[PrimeNg Site](https://www.primefaces.org/primeng-v14-lts/)
+[PrimeNg user guide](https://www.primefaces.org/primeng-v14-lts/)
 
-[NgRx Site](https://ngrx.io/)
+[NgRx user guide](https://ngrx.io/)
