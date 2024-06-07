@@ -5,7 +5,7 @@
     </div>
     <div class="col-12">
         <div class="col-12 list_header">
-            <h3>ToDo List</h3>
+            <h3>{{ 'todos.header' | translate }}</h3>
         </div>
         <form [formGroup]="todoForm">
             <div *ngFor="let item of todosFormArray.controls; let index = index" class="col-12">

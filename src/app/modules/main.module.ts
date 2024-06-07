@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import * as fromTodos from './store/reducers';
 import * as fromGuards from './guards';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import * as fromGuards from './guards';
     MainRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    TranslateModule,
     StoreModule.forFeature('todos', fromTodos.reducers),
     ...Primemodules
   ],

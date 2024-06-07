@@ -9,6 +9,7 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
 import { editTodoAction, updateTodoAction } from '../../store/actions/edit-todo.actions';
 import { deleteTodoAction } from '../../store/actions/delete-todo.actions';
+import { TranslationService } from '../../services/translation.service';
 
 @Component({
   selector: 'app-todos',
@@ -20,11 +21,14 @@ export class TodosComponent implements OnInit {
   public todoItem: string;
   public todosList: Todo[];
 
-  constructor(private store: Store<fromRoot.State>, private fb: FormBuilder) { }
+  translate = (key: string) => <string>{};
+
+  constructor(private store: Store<fromRoot.State>, private fb: FormBuilder, private translationService: TranslationService) { }
 
   todoForm: FormGroup;
 
   ngOnInit(): void {
+    this.translate = (key: string) => this.translationService.getTranslation(key);
     this.todoForm = this.createForm();
     this.getTodoList();
   }
